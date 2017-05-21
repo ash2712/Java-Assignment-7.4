@@ -1,0 +1,62 @@
+import java.util.*;
+public class MyClass {
+
+	public static void main(String s[]){
+		
+		System.out.println("Hello");//Opening text	
+		System.out.println("Please type in the present date in the form yyyy/mm/dd");
+		presentDate pd = new presentDate();
+		pd.getDate();
+		
+		
+	}
+}
+
+class presentDate{
+	
+	Scanner sc = new Scanner(System.in);
+	String userDate;
+	String date;
+	int month;
+	String year;
+ 
+	String monthConvert[] = new String[12];{//Array determines exact month
+	monthConvert[0] = "January";
+	monthConvert[1] = "February";
+	monthConvert[2] = "March";
+	monthConvert[3] = "April";
+	monthConvert[4] = "May";
+	monthConvert[5] = "June";
+	monthConvert[6] = "July";
+	monthConvert[7] = "August";
+	monthConvert[8] = "September";
+	monthConvert[9] = "October";
+	monthConvert[10] = "November";
+	monthConvert[11] = "December";
+	}
+	
+	void getDate(){
+		
+		
+		userDate = sc.nextLine();
+		int dateLength = userDate.length();
+		
+		 if (dateLength == 10){//The maximum number of characters possible in the format yyyy/mm/dd
+			year = userDate.substring(0,4);//uses substrings of the user input and sores them in variables
+			String monthVar = userDate.substring(5,7);
+			date = userDate.substring(8,10);   
+			month = Integer.parseInt(monthVar);
+			String monthInWords = monthConvert[month - 1];//finds the exact month in words for the month given by user
+			
+			System.out.println("The date is " + date+" " + monthInWords + " " + year); //prints output
+		}else {
+			System.out.println("Sorry, your input doesn't seem to match the format. Please try typing it AGAIN in the format yyyy/mm/dd ");//this message comes if format of user doesn't match format of program
+			System.out.println("Do fill in any zeroes if required");
+			getDate();
+		}
+		
+		
+		
+	}
+	
+}
